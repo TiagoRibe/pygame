@@ -82,16 +82,16 @@ class mbp(py.sprite.Sprite):
             self.y = HEIGHT - self.height / 2
             self.vel *= -1
 
-class Tela(p.sprite.Sprite):
+class Tela(py.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.imapa = self.image.load
-        self.iwin = self.image.load
-        self.ilose = self.image.load
+        self.imapa = py.image.load ('mapa1.png')
+        self.iwin = py.image.load ('grama_na_direita.jpg')
+        self.ilose = py.image.load ('grama_na_esquerda.jpg')
 
-        self.imapa = p.transform.scale (self.imapa,(WIDTH,HEIGHT))
-        self.iwin = p.transform.scale (self.iwin,(WIDTH,HEIGHT))
-        self.ilose = p.transform.scale (self.ilose,(WIDTH,HEIGHT))
+        self.imapa = py.transform.scale (self.imapa,(WIDTH,HEIGHT))
+        self.iwin = py.transform.scale (self.iwin,(WIDTH,HEIGHT))
+        self.ilose = py.transform.scale (self.ilose,(WIDTH,HEIGHT))
 
         self.image = self.imapa
         self.x = 0
@@ -100,6 +100,32 @@ class Tela(p.sprite.Sprite):
 
         def update (self):
             self.rect.topleft = (self.x,self.y)
+
+class breja (py.sprite.Sprite):
+    def __init__(self,numero):
+        super().__init__()
+        self.numero = numero
+        if self.numero == 1:
+            self.image = py.image.load ('cerveja.png')
+            self.visible = False
+            self.x = 50
+        else:
+            self.image = py.image.load ('cerveja.png')
+            self.visible = True
+            self.x = 580
+        
+        self.y = HEIGHT / 2
+        self.image = py.transform.scale2x(self.image)
+        self.rect = self.image.get_rect()
+    
+    def update (self):
+        if self.visible:
+            self.rect.center = (self.x,self.y)
+
+
+def pontodpl():
+    ponto_texto = pontos_font.render(str(pontos) + ' / 5', True, (0,0,0))
+    window.blit(ponto_texto,(255,10))  
 
 WIDTH = 1280
 HEIGHT = 720
@@ -110,8 +136,11 @@ window= py.display.set_mode((WIDTH,HEIGHT))
 py.display.set_caption ('Crossy Tiête')
 clock = py.time.Clock ()
 
-fundo = Screen ()
-screen_group = p.sprite.Group()
+pontos = 0
+pontos_font = py.font.SysFont ('comicsans', 50 , True)
+
+fundo = Tela ()
+screen_group = py.sprite.Group()
 screen_group.add(fundo)
 
 capy =capy()
@@ -140,6 +169,7 @@ while game :
     capy_group.update()
     group_mbp.update()
     screen_group.update()
+    pontodpl()
 
     py.display.update()
 py.quit()
