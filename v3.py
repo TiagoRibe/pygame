@@ -82,7 +82,24 @@ class mbp(py.sprite.Sprite):
             self.y = HEIGHT - self.height / 2
             self.vel *= -1
 
+class Tela(p.sprite.Sprite):
+    def __init__(self):
+        super().__init__()
+        self.imapa = self.image.load
+        self.iwin = self.image.load
+        self.ilose = self.image.load
 
+        self.imapa = p.transform.scale (self.imapa,(WIDTH,HEIGHT))
+        self.iwin = p.transform.scale (self.iwin,(WIDTH,HEIGHT))
+        self.ilose = p.transform.scale (self.ilose,(WIDTH,HEIGHT))
+
+        self.image = self.imapa
+        self.x = 0
+        self.y = 0
+        self.rect = self.image.get_rect()
+
+        def update (self):
+            self.rect.topleft = (self.x,self.y)
 
 WIDTH = 1280
 HEIGHT = 720
@@ -92,6 +109,10 @@ py.init()
 window= py.display.set_mode((WIDTH,HEIGHT))
 py.display.set_caption ('Crossy Tiête')
 clock = py.time.Clock ()
+
+fundo = Screen ()
+screen_group = p.sprite.Group()
+screen_group.add(fundo)
 
 capy =capy()
 capy_group = py.sprite.Group()
@@ -112,12 +133,13 @@ while game :
         if event.type == py.QUIT:
             game = False
 
-    window.fill((0,255,0))
+    screen_group.draw(window)
 
     capy_group.draw(window)
     group_mbp.draw(window)
     capy_group.update()
     group_mbp.update()
+    screen_group.update()
 
     py.display.update()
 py.quit()
