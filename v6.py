@@ -134,8 +134,9 @@ class brj (py.sprite.Sprite):
     def pegabrj(self):
         global pontos,capy
 
-        pega_brj= py.sprite.spritecollide(self, capy_group, False, py.sprite.collide_mask)
-        if pega_brj:
+        pega_brj = py.sprite.spritecollide(self, capy_group, True, py.sprite.collide_mask)
+        if len(pega_brj) > 0:
+            print('atingiu')
             self.visible= False
         
         if self.numero == 1:
