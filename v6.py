@@ -225,7 +225,7 @@ def MataQualquer():
     capy_group.empty()
     group_brj.empty()
     group_mbp.empty()
-    pontos.empty()
+    
 
     brjs.clear()
     
