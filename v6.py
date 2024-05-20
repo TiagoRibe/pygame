@@ -139,7 +139,7 @@ class brj (py.sprite.Sprite):
             self.visible= False
         
             if self.numero == 1:
-                brj1.visible = True
+                brj2.visible = True
                 if pontos< 5:
                     sobenivel()
                 else:
@@ -147,7 +147,7 @@ class brj (py.sprite.Sprite):
                     MataQualquer()
                     TelaFim(1)
             else:
-                brj2.visible= True
+                brj1.visible= True
 
 class explosao(object):
     def __init__(self):
@@ -205,7 +205,7 @@ def sobenivel():
     else:
         mbappe_2.vel += 1 
 
-    ponto += 1
+    pontos += 1
 
 def MataCapy():
     global capy
@@ -247,7 +247,7 @@ window= py.display.set_mode((WIDTH,HEIGHT))
 py.display.set_caption ('Crossy Tiête')
 clock = py.time.Clock ()
 
-pontos = -1
+pontos = 0
 pontos_font = py.font.SysFont ('comicsans', 50 , True)
 
 fundo = Tela ()
