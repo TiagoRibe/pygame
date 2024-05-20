@@ -115,7 +115,7 @@ class brj (py.sprite.Sprite):
         if self.numero == 1:
             self.image = py.image.load ('cerveja.png')
             self.visible = False
-            self.x = 50
+            self.x = 130
         else:
             self.image = py.image.load ('cerveja.png')
             self.visible = True
@@ -134,21 +134,20 @@ class brj (py.sprite.Sprite):
     def pegabrj(self):
         global pontos,capy
 
-        pega_brj = py.sprite.spritecollide(self, capy_group, True, py.sprite.collide_mask)
-        if len(pega_brj) > 0:
-            print('atingiu')
+        pega_brj = py.sprite.spritecollide(self, capy_group, False, py.sprite.collide_mask)
+        if pega_brj:
             self.visible= False
         
-        if self.numero == 1:
-            brj1.visible = True
-            if pontos< 5:
-                sobenivel()
+            if self.numero == 1:
+                brj1.visible = True
+                if pontos< 5:
+                    sobenivel()
+                else:
+                    capy_group.empty()
+                    MataQualquer()
+                    TelaFim(1)
             else:
-                capy_group.empty()
-                MataQualquer()
-                TelaFim(1)
-        else:
-            brj2.visible= True
+                brj2.visible= True
 
 class explosao(object):
     def __init__(self):
@@ -248,7 +247,7 @@ window= py.display.set_mode((WIDTH,HEIGHT))
 py.display.set_caption ('Crossy Tiête')
 clock = py.time.Clock ()
 
-pontos = 0
+pontos = -1
 pontos_font = py.font.SysFont ('comicsans', 50 , True)
 
 fundo = Tela ()
@@ -290,8 +289,8 @@ while game :
     group_brj.draw(window)
     group_mbp.update()
     capy_group.update()
-    screen_group.update()
     group_brj.update()
+    screen_group.update()
     
 
     py.display.update()
