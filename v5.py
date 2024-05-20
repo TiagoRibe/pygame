@@ -1,4 +1,5 @@
 import pygame as py
+import time
 
 class capy(py.sprite.Sprite):
     def __init__(self):
@@ -51,7 +52,8 @@ class capy(py.sprite.Sprite):
 
     def Checaimpacto(self):
         mbpC=py.sprite.spritecollide(self, group_mbp, False, py.sprite.collide_mask)
-
+        if mbpC:
+            explosao.explode(self.x, self.y)
 
 class mbp(py.sprite.Sprite):
     def __init__ (self,numero):
@@ -143,6 +145,31 @@ class brj (py.sprite.Sprite):
         else:
             brj2.visible= True
 
+class explosao(object):
+    def __init__(self):
+        self.costume =1 
+        self.width= 140 
+        self.height= 140
+        self.image=py.image.load('explosion'+ str(self.costume)+ '.png')
+        self.image=py.transform.scale(self.image, (self.width, self.height))
+
+    def explode(self,x,y):
+        x= x-self.width/2
+        y= y-self.height/2
+        MataCapy()
+
+        while self.costume < 9:
+            self.image=py.image.load('explosion'+ str(self.costume)+ '.png')
+            self.image=py.transform.scale(self.image, (self.width, self.height))
+            window.blit(self.image, (x,y))
+            py.display.update()
+
+            self.costume += 1 
+            time.sleep(0.1)
+
+        MataQualquer()
+        
+
 
 def pontodpl():
     ponto_texto = pontos_font.render(str(pontos) + ' / 5', True, (0,0,0))
@@ -223,6 +250,8 @@ brj2= brj(2)
 group_brj=py.sprite.Group()
 group_brj.add(brj1,brj2)
 brjs= [brj1,brj2]
+
+explosao= explosao()
 
 game = True
 
