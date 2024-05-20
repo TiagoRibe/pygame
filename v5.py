@@ -20,7 +20,7 @@ class capy(py.sprite.Sprite):
     def update (self):
         self.movement()
         self.correction()
-        self.Checaimpacto
+        self.Checaimpacto()
         self.rect.center = (self.x,self.y)
     
     def movement (self):
@@ -91,8 +91,8 @@ class Tela(py.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.imapa = py.image.load ('mapa1.png')
-        self.iwin = py.image.load ('grama_na_direita.jpg')
-        self.ilose = py.image.load ('grama_na_esquerda.jpg')
+        self.iwin = py.image.load ('fuga_mbappé.png')
+        self.ilose = py.image.load ('mbappé_te_pegou.png')
 
         self.imapa = py.transform.scale (self.imapa,(WIDTH,HEIGHT))
         self.iwin = py.transform.scale (self.iwin,(WIDTH,HEIGHT))
@@ -106,7 +106,7 @@ class Tela(py.sprite.Sprite):
         def update (self):
             self.rect.topleft = (self.x,self.y)
 
-class breja (py.sprite.Sprite):
+class brj (py.sprite.Sprite):
     def __init__(self,numero):
         super().__init__()
         self.numero = numero
@@ -117,7 +117,7 @@ class breja (py.sprite.Sprite):
         else:
             self.image = py.image.load ('cerveja.png')
             self.visible = True
-            self.x = 580
+            self.x = 1170
         
         self.y = HEIGHT / 2
         self.image = py.transform.scale2x(self.image)
@@ -126,22 +126,22 @@ class breja (py.sprite.Sprite):
     
     def update (self):
         if self.visible:
-            self.pegabreja()
+            self.pegabrj()
             self.rect.center = (self.x,self.y) 
 
-    def pegabreja(self):
+    def pegabrj(self):
         global pontos,capy
 
         pega_brj= py.sprite.spritecollide(self, capy_group, False, py.sprite.collide_mask)
         if pega_brj:
             self.visible= False
         
-        if self.number == 1:
-            breja1.visible = True
+        if self.numero == 1:
+            brj1.visible = True
             if pontos< 5:
                 sobenivel()
         else:
-            breja2.visible= True
+            brj2.visible= True
 
 
 def pontodpl():
@@ -149,13 +149,13 @@ def pontodpl():
     window.blit(ponto_texto,(255,10))  
 
 def checabreja():
-    for breja in brejas:
-        if not breja.visible:
-            breja.kill()
+    for brj in brjs:
+        if not brj.visible:
+            brj.kill()
 
         else:
-            if not breja.alive():
-                group_brj.add(breja)
+            if not brj.alive():
+                group_brj.add(brj)
 
 def sobenivel():
     global pontos
@@ -190,7 +190,7 @@ def MataCapy():
 def MataQualquer():
     capy_group.empty()
     group_brj.empty()
-    brejas.clear()
+    brjs.clear()
     
     
 WIDTH = 1280
@@ -218,11 +218,11 @@ mbappe_2 = mbp(2)
 group_mbp = py.sprite.Group()
 group_mbp.add(mbappe_1,mbappe_2)
 
-breja1= breja(1)
-breja2= breja(2)
+brj1= brj(1)
+brj2= brj(2)
 group_brj=py.sprite.Group()
-group_brj.add(breja1,breja1)
-brejas= [breja1,breja2]
+group_brj.add(brj1,brj2)
+brjs= [brj1,brj2]
 
 game = True
 
