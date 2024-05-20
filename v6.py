@@ -230,10 +230,10 @@ def TelaFim(n):
 
     jogo= False
     if n == 0:
-        Ffundo.image= Ffundo.ilose
+        fundo.image= fundo.ilose
     
     elif n ==1:
-        Ffundo.image= Ffundo.iwin
+        fundo.image= fundo.iwin
 
 WIDTH = 1280
 HEIGHT = 720
