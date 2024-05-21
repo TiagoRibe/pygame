@@ -54,6 +54,7 @@ class capy(py.sprite.Sprite):
         mbpC=py.sprite.spritecollide(self, group_mbp, False, py.sprite.collide_mask)
         if mbpC:
             explosao.explode(self.x, self.y)
+            somExp.play()
 
 class mbp(py.sprite.Sprite):
     def __init__ (self,numero):
@@ -137,6 +138,7 @@ class brj (py.sprite.Sprite):
         pega_brj = py.sprite.spritecollide(self, capy_group, False, py.sprite.collide_mask)
         if pega_brj:
             self.visible= False
+            somB.play()
         
             if self.numero == 1:
                 brj2.visible = True
@@ -234,11 +236,11 @@ def TelaFim(n):
     jogo= False
     if n == 0:
         fundo.image= fundo.ilose
-        
+        somD.play()
     
     elif n ==1:
         fundo.image= fundo.iwin
-        
+        somV.play()
 
 WIDTH = 1280
 HEIGHT = 720
@@ -283,6 +285,7 @@ jogo=True
 game = True
 
 while game :
+    somJG.play()
     clock.tick(60)
     for event in py.event.get():
         if event.type == py.QUIT:
