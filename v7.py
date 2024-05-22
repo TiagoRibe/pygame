@@ -53,8 +53,9 @@ class capy(py.sprite.Sprite):
     def Checaimpacto(self):
         mbpC=py.sprite.spritecollide(self, group_mbp, False, py.sprite.collide_mask)
         if mbpC:
-            explosao.explode(self.x, self.y)
             somExp.play()
+            explosao.explode(self.x, self.y)
+            
 
 class mbp(py.sprite.Sprite):
     def __init__ (self,numero):
@@ -285,7 +286,7 @@ jogo=True
 game = True
 
 while game :
-    somJG.play()
+
     clock.tick(60)
     for event in py.event.get():
         if event.type == py.QUIT:
