@@ -26,4 +26,5 @@ Mbappé: https://x.com/SquadsNFT/status/1512390270331101185/photo/3
 Rua: https://pt.vecteezy.com/arte-vetorial/1844708-road-vector-design-illustration-isolated-on-white-background
 
 ------------------------------Video------------------------------
+
 Video Gameplay: https://youtu.be/RBqktwoLWoE
