@@ -16,7 +16,14 @@ O versão final do jogo esta no arquivo "v7.py" entao ao executar este arquivo o
 
 
 --------------------------------Referências------------------------------
+
 Capivara: https://br.pinterest.com/pin/712694709800155347/
+
 Cerveja: https://br.freepik.com/vetores-premium/ilustracao-de-pixel-art-cerveja-pixelizada-cerveja-cerveja-icone-de-bebida-pixelizado-para-o-pixel_80324019.htm
+
 Mbappé: https://x.com/SquadsNFT/status/1512390270331101185/photo/3
+
 Rua: https://pt.vecteezy.com/arte-vetorial/1844708-road-vector-design-illustration-isolated-on-white-background
+
+------------------------------Video------------------------------
+Video Gameplay: https://youtu.be/RBqktwoLWoE
